@@ -1,9 +1,11 @@
 package com.lozano.showcase.healthcheck_mock_service.api;
 
+import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+@Log4j2
 @RestController
 @RequestMapping(value = "/mockService")
 public class BasicDummyHealthAPIs {
@@ -11,6 +13,7 @@ public class BasicDummyHealthAPIs {
     @GetMapping
     @RequestMapping(value = "/blue")
     public ResponseEntity getHealthBlue(){
+        log.info("BasicDummyHealthAPIs - getHealthBlue called successfully");
         return ResponseEntity.ok("healthy");
     }
 
@@ -22,6 +25,7 @@ public class BasicDummyHealthAPIs {
                 return ResponseEntity.badRequest().build();
             }
         }
+        log.info("BasicDummyHealthAPIs - getHealthRed called successfully");
         return ResponseEntity.ok("healthy");
     }
 
@@ -33,6 +37,7 @@ public class BasicDummyHealthAPIs {
                 return ResponseEntity.badRequest().build();
             }
         }
+        log.info("BasicDummyHealthAPIs - getHealthGreen called successfully");
         return ResponseEntity.ok("healthy");
     }
 }
